@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Merged Logs</title>
+    <style>
+        table {
+            table-layout: fixed; /* テーブルの幅を固定 */
+            width: 100%; /* テーブルの幅を100%に設定 */
+            border-collapse: collapse; /* テーブルのボーダーを統合 */
+        }
+        th, td {
+            word-wrap: break-word; /* 長い単語が途中で折り返されるように */
+            padding: 8px;
+            border: 1px solid #ddd; /* セルのボーダーを設定 */
+            text-align: left; /* セル内のテキストを左揃え */
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+<h1>Merged Logs</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Log File 1</th>
+        <th>Log File 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="log : ${mergedLogs}">
+        <td th:text="${log.timestamp}"></td>
+        <td th:text="${log.log1Message}" style="word-break: break-all;"></td>
+        <td th:text="${log.log2Message}" style="word-break: break-all;"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
